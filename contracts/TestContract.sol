@@ -22,6 +22,7 @@ contract TestContract is DemoBase{
     }
 
     function TwoNumSum2() public returns (uint) {
+        emit SumNum(getTestNum1(),getTest1Num1(),now);        
         return getTestNum1().add(getTest1Num1());
         // demoStorage.setUint(keccak256("test.twonumsum.2"),getTestNum1().add(14));
     }
