@@ -19,7 +19,8 @@ module.exports = async (deployer, network) => {
             return deployer.deploy([
                 [testContract, demoStorage.address],
                 [test1Contract, demoStorage.address],
-                [demoUpgrade, demoStorage.address]
+                [demoUpgrade, demoStorage.address],
+                [test3Contract, demoStorage.address]
             ]);
         })
 
@@ -67,6 +68,24 @@ module.exports = async (deployer, network) => {
             );
             console.log('\x1b[33m%s\x1b[0m:', 'Set demoUpgrade Address');
             console.log(demoUpgrade.address);
+
+            /*** Permissions *********/
+
+            // Disable direct access to storage now
+            await demoStorageInstance.setBool(
+                config.web3.utils.soliditySha3('contract.storage.initialised'),
+                true
+            );
+
+            // test3Contract地址设置
+            await demoStorageInstance.setAddress(
+                config.web3.utils.soliditySha3('contract.address', test3Contract.address),
+                test3Contract.address
+            );
+            await demoStorageInstance.setAddress(
+                config.web3.utils.soliditySha3('contract.name', 'test3Contract'),
+                test3Contract.address
+            );
 
         })
 }

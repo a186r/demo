@@ -3,7 +3,7 @@ pragma solidity ^0.4.23;
 import "../lib/SafeMath.sol";
 import "./DemoBase.sol";
 
-contract Test2Contract is DemoBase{
+contract Test3Contract is DemoBase{
 
     using SafeMath for uint;
 
@@ -12,11 +12,11 @@ contract Test2Contract is DemoBase{
     }
 
     function setTest2Num1(uint _num) public onlySuperUser{
-        demoStorage.setUint(keccak256("test2.num.1"),_num);
+        demoStorage.setUint(keccak256("test3.num.1"),_num);
     }
 
     function getTest2Num1() public view returns (uint256){
-        return demoStorage.getUint(keccak256("test2.num.1"));
+        return demoStorage.getUint(keccak256("test3.num.1"));
     }
 
     function setTestNum1(uint _num) public onlySuperUser{
