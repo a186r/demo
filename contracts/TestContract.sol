@@ -2,10 +2,13 @@ pragma solidity ^0.4.23;
 
 import "../lib/SafeMath.sol";
 import "./DemoBase.sol";
+import "../lib/ds-guard.sol";
 
-contract TestContract is DemoBase{
+contract TestContract is DemoBase,DSGuard{
 
     using SafeMath for uint;
+
+    DSGuard public dsguard;
 
     event SumNum(
         uint256 _TestNum1,
@@ -17,12 +20,20 @@ contract TestContract is DemoBase{
         version = 1;
     }
 
+    function setGuard() public onlySuperUser{
+        dsguard.permit(
+            msg.sender,
+            demoStorage.getAddress(keccak256("contract.name","Test1Contract")),
+            ANY
+        );
+    }
+
     function TwoNumSum(uint _num1,uint _num2) public {
         demoStorage.setUint(keccak256("test.twonumsum"),_num1.add(_num2));
     }
 
     function TwoNumSum2() public returns (uint) {
-        emit SumNum(getTestNum1(),getTest1Num1(),now);        
+        emit SumNum(getTestNum1(),getTest1Num1(),now);
         return getTestNum1().add(getTest1Num1());
         // demoStorage.setUint(keccak256("test.twonumsum.2"),getTestNum1().add(14));
     }

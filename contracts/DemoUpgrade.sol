@@ -26,16 +26,17 @@ contract DemoUpgrade is DemoBase{
 
     // 合约升级方法
 
-    // _name 合约名
+    // _name 要替换的合约名
     // _upgradedContractAddress 新的合约地址
     // _forceEther`
+ 
     function upgradeContract(string _name,address _upgradedContractAddress,bool _forceEther,bool _forceTokens) onlyOwner external {
         // 获取到要替换的合约
         address oldContractAddress = demoStorage.getAddress(keccak256("contract.name",_name));
         //检查是否存在
-        require(oldContractAddress != 0x0);
+        // require(oldContractAddress != 0x0);
 
-        require(oldContractAddress != _upgradedContractAddress);
+        // require(oldContractAddress != _upgradedContractAddress);
 
         // 非强制升级需要检查旧合约有没有余额
         if(!_forceEther){
