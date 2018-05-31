@@ -1,6 +1,8 @@
 pragma solidity ^0.4.23;
 
-contract ValidatorSetInterface {
+import "../contracts/DemoBase.sol";
+
+contract ValidatorSetInterface is DemoBase{
     /// Issue this log event to signal a desired change in validator set.
     /// This will not lead to a change in active validator set until
     /// finalizeChange is called.
