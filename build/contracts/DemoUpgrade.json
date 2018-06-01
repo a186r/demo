@@ -165,7 +165,7 @@
         "id": 426,
         "nodeType": "ImportDirective",
         "scope": 651,
-        "sourceUnit": 834,
+        "sourceUnit": 1804,
         "src": "79:32:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -215,7 +215,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ERC20_$833",
+              "typeIdentifier": "t_contract$_ERC20_$1803",
               "typeString": "contract ERC20"
             },
             "typeName": {
@@ -223,10 +223,10 @@
               "id": 429,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 833,
+              "referencedDeclaration": 1803,
               "src": "172:5:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$833",
+                "typeIdentifier": "t_contract$_ERC20_$1803",
                 "typeString": "contract ERC20"
               }
             },
@@ -263,10 +263,10 @@
                 "name": "ERC20",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 833,
+                "referencedDeclaration": 1803,
                 "src": "194:5:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                  "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                   "typeString": "type(contract ERC20)"
                 }
               },
@@ -280,7 +280,7 @@
               "nodeType": "FunctionCall",
               "src": "194:8:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$833",
+                "typeIdentifier": "t_contract$_ERC20_$1803",
                 "typeString": "contract ERC20"
               }
             },
@@ -690,7 +690,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "935:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -728,7 +728,7 @@
                         "referencedDeclaration": 9,
                         "src": "912:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -739,7 +739,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "912:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -884,10 +884,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1217:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -971,7 +971,7 @@
                             "referencedDeclaration": 433,
                             "src": "1309:13:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
@@ -1038,7 +1038,7 @@
                                       "name": "keccak256",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 842,
+                                      "referencedDeclaration": 1850,
                                       "src": "1354:9:2",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -1076,7 +1076,7 @@
                                     "referencedDeclaration": 9,
                                     "src": "1331:11:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                                       "typeString": "contract DemoStorageInterface"
                                     }
                                   },
@@ -1087,7 +1087,7 @@
                                   "lValueRequested": false,
                                   "memberName": "getAddress",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 659,
+                                  "referencedDeclaration": 1629,
                                   "src": "1331:22:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -1120,10 +1120,10 @@
                               "name": "ERC20",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 833,
+                              "referencedDeclaration": 1803,
                               "src": "1325:5:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                                "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                                 "typeString": "type(contract ERC20)"
                               }
                             },
@@ -1137,13 +1137,13 @@
                             "nodeType": "FunctionCall",
                             "src": "1325:70:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
                           "src": "1309:86:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_ERC20_$833",
+                            "typeIdentifier": "t_contract$_ERC20_$1803",
                             "typeString": "contract ERC20"
                           }
                         },
@@ -1199,7 +1199,7 @@
                                     "referencedDeclaration": 433,
                                     "src": "1417:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_ERC20_$833",
+                                      "typeIdentifier": "t_contract$_ERC20_$1803",
                                       "typeString": "contract ERC20"
                                     }
                                   },
@@ -1210,7 +1210,7 @@
                                   "lValueRequested": false,
                                   "memberName": "balanceOf",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 794,
+                                  "referencedDeclaration": 1764,
                                   "src": "1417:23:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -1269,10 +1269,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1409:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1314,7 +1314,7 @@
                             "referencedDeclaration": 433,
                             "src": "1481:13:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
@@ -1381,7 +1381,7 @@
                                       "name": "keccak256",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 842,
+                                      "referencedDeclaration": 1850,
                                       "src": "1526:9:2",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -1419,7 +1419,7 @@
                                     "referencedDeclaration": 9,
                                     "src": "1503:11:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                                       "typeString": "contract DemoStorageInterface"
                                     }
                                   },
@@ -1430,7 +1430,7 @@
                                   "lValueRequested": false,
                                   "memberName": "getAddress",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 659,
+                                  "referencedDeclaration": 1629,
                                   "src": "1503:22:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -1463,10 +1463,10 @@
                               "name": "ERC20",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 833,
+                              "referencedDeclaration": 1803,
                               "src": "1497:5:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                                "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                                 "typeString": "type(contract ERC20)"
                               }
                             },
@@ -1480,13 +1480,13 @@
                             "nodeType": "FunctionCall",
                             "src": "1497:70:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
                           "src": "1481:86:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_ERC20_$833",
+                            "typeIdentifier": "t_contract$_ERC20_$1803",
                             "typeString": "contract ERC20"
                           }
                         },
@@ -1542,7 +1542,7 @@
                                     "referencedDeclaration": 433,
                                     "src": "1589:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_ERC20_$833",
+                                      "typeIdentifier": "t_contract$_ERC20_$1803",
                                       "typeString": "contract ERC20"
                                     }
                                   },
@@ -1553,7 +1553,7 @@
                                   "lValueRequested": false,
                                   "memberName": "balanceOf",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 794,
+                                  "referencedDeclaration": 1764,
                                   "src": "1589:23:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -1612,10 +1612,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1581:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1697,7 +1697,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1682:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -1752,7 +1752,7 @@
                         "referencedDeclaration": 9,
                         "src": "1659:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -1763,7 +1763,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "1659:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -1842,7 +1842,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1774:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -1897,7 +1897,7 @@
                         "referencedDeclaration": 9,
                         "src": "1751:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -1908,7 +1908,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "1751:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -1987,7 +1987,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1891:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -2025,7 +2025,7 @@
                         "referencedDeclaration": 9,
                         "src": "1865:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -2036,7 +2036,7 @@
                       "lValueRequested": false,
                       "memberName": "deleteAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 741,
+                      "referencedDeclaration": 1711,
                       "src": "1865:25:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$returns$__$",
@@ -2097,7 +2097,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 850,
+                        "referencedDeclaration": 1858,
                         "src": "2017:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2375,10 +2375,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2123:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2489,7 +2489,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2259:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -2527,7 +2527,7 @@
                         "referencedDeclaration": 9,
                         "src": "2236:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -2538,7 +2538,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "2236:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -2628,10 +2628,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2302:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2742,7 +2742,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2468:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -2780,7 +2780,7 @@
                         "referencedDeclaration": 9,
                         "src": "2445:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -2791,7 +2791,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "2445:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -2881,10 +2881,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2525:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2963,7 +2963,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2650:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -3018,7 +3018,7 @@
                         "referencedDeclaration": 9,
                         "src": "2627:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -3029,7 +3029,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "2627:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -3108,7 +3108,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2733:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -3163,7 +3163,7 @@
                         "referencedDeclaration": 9,
                         "src": "2710:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -3174,7 +3174,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "2710:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -3222,7 +3222,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 850,
+                        "referencedDeclaration": 1858,
                         "src": "2844:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3428,7 +3428,7 @@
         "id": 426,
         "nodeType": "ImportDirective",
         "scope": 651,
-        "sourceUnit": 834,
+        "sourceUnit": 1804,
         "src": "79:32:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3478,7 +3478,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ERC20_$833",
+              "typeIdentifier": "t_contract$_ERC20_$1803",
               "typeString": "contract ERC20"
             },
             "typeName": {
@@ -3486,10 +3486,10 @@
               "id": 429,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 833,
+              "referencedDeclaration": 1803,
               "src": "172:5:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$833",
+                "typeIdentifier": "t_contract$_ERC20_$1803",
                 "typeString": "contract ERC20"
               }
             },
@@ -3526,10 +3526,10 @@
                 "name": "ERC20",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 833,
+                "referencedDeclaration": 1803,
                 "src": "194:5:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                  "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                   "typeString": "type(contract ERC20)"
                 }
               },
@@ -3543,7 +3543,7 @@
               "nodeType": "FunctionCall",
               "src": "194:8:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$833",
+                "typeIdentifier": "t_contract$_ERC20_$1803",
                 "typeString": "contract ERC20"
               }
             },
@@ -3953,7 +3953,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "935:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -3991,7 +3991,7 @@
                         "referencedDeclaration": 9,
                         "src": "912:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -4002,7 +4002,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "912:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -4147,10 +4147,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1217:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4234,7 +4234,7 @@
                             "referencedDeclaration": 433,
                             "src": "1309:13:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
@@ -4301,7 +4301,7 @@
                                       "name": "keccak256",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 842,
+                                      "referencedDeclaration": 1850,
                                       "src": "1354:9:2",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -4339,7 +4339,7 @@
                                     "referencedDeclaration": 9,
                                     "src": "1331:11:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                                       "typeString": "contract DemoStorageInterface"
                                     }
                                   },
@@ -4350,7 +4350,7 @@
                                   "lValueRequested": false,
                                   "memberName": "getAddress",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 659,
+                                  "referencedDeclaration": 1629,
                                   "src": "1331:22:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -4383,10 +4383,10 @@
                               "name": "ERC20",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 833,
+                              "referencedDeclaration": 1803,
                               "src": "1325:5:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                                "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                                 "typeString": "type(contract ERC20)"
                               }
                             },
@@ -4400,13 +4400,13 @@
                             "nodeType": "FunctionCall",
                             "src": "1325:70:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
                           "src": "1309:86:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_ERC20_$833",
+                            "typeIdentifier": "t_contract$_ERC20_$1803",
                             "typeString": "contract ERC20"
                           }
                         },
@@ -4462,7 +4462,7 @@
                                     "referencedDeclaration": 433,
                                     "src": "1417:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_ERC20_$833",
+                                      "typeIdentifier": "t_contract$_ERC20_$1803",
                                       "typeString": "contract ERC20"
                                     }
                                   },
@@ -4473,7 +4473,7 @@
                                   "lValueRequested": false,
                                   "memberName": "balanceOf",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 794,
+                                  "referencedDeclaration": 1764,
                                   "src": "1417:23:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -4532,10 +4532,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1409:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4577,7 +4577,7 @@
                             "referencedDeclaration": 433,
                             "src": "1481:13:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
@@ -4644,7 +4644,7 @@
                                       "name": "keccak256",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 842,
+                                      "referencedDeclaration": 1850,
                                       "src": "1526:9:2",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -4682,7 +4682,7 @@
                                     "referencedDeclaration": 9,
                                     "src": "1503:11:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                                      "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                                       "typeString": "contract DemoStorageInterface"
                                     }
                                   },
@@ -4693,7 +4693,7 @@
                                   "lValueRequested": false,
                                   "memberName": "getAddress",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 659,
+                                  "referencedDeclaration": 1629,
                                   "src": "1503:22:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -4726,10 +4726,10 @@
                               "name": "ERC20",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 833,
+                              "referencedDeclaration": 1803,
                               "src": "1497:5:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_ERC20_$833_$",
+                                "typeIdentifier": "t_type$_t_contract$_ERC20_$1803_$",
                                 "typeString": "type(contract ERC20)"
                               }
                             },
@@ -4743,13 +4743,13 @@
                             "nodeType": "FunctionCall",
                             "src": "1497:70:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_ERC20_$833",
+                              "typeIdentifier": "t_contract$_ERC20_$1803",
                               "typeString": "contract ERC20"
                             }
                           },
                           "src": "1481:86:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_ERC20_$833",
+                            "typeIdentifier": "t_contract$_ERC20_$1803",
                             "typeString": "contract ERC20"
                           }
                         },
@@ -4805,7 +4805,7 @@
                                     "referencedDeclaration": 433,
                                     "src": "1589:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_ERC20_$833",
+                                      "typeIdentifier": "t_contract$_ERC20_$1803",
                                       "typeString": "contract ERC20"
                                     }
                                   },
@@ -4816,7 +4816,7 @@
                                   "lValueRequested": false,
                                   "memberName": "balanceOf",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 794,
+                                  "referencedDeclaration": 1764,
                                   "src": "1589:23:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -4875,10 +4875,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              851,
-                              852
+                              1859,
+                              1860
                             ],
-                            "referencedDeclaration": 851,
+                            "referencedDeclaration": 1859,
                             "src": "1581:7:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4960,7 +4960,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1682:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -5015,7 +5015,7 @@
                         "referencedDeclaration": 9,
                         "src": "1659:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -5026,7 +5026,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "1659:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -5105,7 +5105,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1774:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -5160,7 +5160,7 @@
                         "referencedDeclaration": 9,
                         "src": "1751:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -5171,7 +5171,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "1751:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -5250,7 +5250,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "1891:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -5288,7 +5288,7 @@
                         "referencedDeclaration": 9,
                         "src": "1865:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -5299,7 +5299,7 @@
                       "lValueRequested": false,
                       "memberName": "deleteAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 741,
+                      "referencedDeclaration": 1711,
                       "src": "1865:25:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$returns$__$",
@@ -5360,7 +5360,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 850,
+                        "referencedDeclaration": 1858,
                         "src": "2017:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -5638,10 +5638,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2123:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -5752,7 +5752,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2259:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -5790,7 +5790,7 @@
                         "referencedDeclaration": 9,
                         "src": "2236:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -5801,7 +5801,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "2236:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -5891,10 +5891,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2302:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -6005,7 +6005,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2468:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -6043,7 +6043,7 @@
                         "referencedDeclaration": 9,
                         "src": "2445:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -6054,7 +6054,7 @@
                       "lValueRequested": false,
                       "memberName": "getAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 659,
+                      "referencedDeclaration": 1629,
                       "src": "2445:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
@@ -6144,10 +6144,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        851,
-                        852
+                        1859,
+                        1860
                       ],
-                      "referencedDeclaration": 851,
+                      "referencedDeclaration": 1859,
                       "src": "2525:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -6226,7 +6226,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2650:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -6281,7 +6281,7 @@
                         "referencedDeclaration": 9,
                         "src": "2627:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -6292,7 +6292,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "2627:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -6371,7 +6371,7 @@
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 842,
+                          "referencedDeclaration": 1850,
                           "src": "2733:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
@@ -6426,7 +6426,7 @@
                         "referencedDeclaration": 9,
                         "src": "2710:11:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DemoStorageInterface_$767",
+                          "typeIdentifier": "t_contract$_DemoStorageInterface_$1737",
                           "typeString": "contract DemoStorageInterface"
                         }
                       },
@@ -6437,7 +6437,7 @@
                       "lValueRequested": false,
                       "memberName": "setAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 701,
+                      "referencedDeclaration": 1671,
                       "src": "2710:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -6485,7 +6485,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 850,
+                        "referencedDeclaration": 1858,
                         "src": "2844:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -6650,10 +6650,10 @@
     "4447": {
       "events": {},
       "links": {},
-      "address": "0x9fbda871d559710256a2502a2517b794b482db40",
-      "transactionHash": "0xce74b811986b214eb5fb37e2b4038ec5d3f31eb587f5c07ca61daadc15d8b995"
+      "address": "0x059e17ceb15ef8470b7184b858d356317518aab3",
+      "transactionHash": "0x5a944ae6ba6615109678f482fc5e062d61092ba9785cceba74b7a123116aa630"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-29T03:27:21.753Z"
+  "updatedAt": "2018-06-01T08:25:32.069Z"
 }

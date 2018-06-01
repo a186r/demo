@@ -1,24 +1,30 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
-import "./DemoStorage.sol";
 
 contract MajorityList is ValidatorSetInterface {
-
     event ChangeFinalized(address[] current_set);
-
     struct ValidatorStatus {
         bool isValidator;
         uint index;
     }
-
+    address SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
     address[] public validatorsList;
     address[] pendingList;
-    // bool finalized;
-    // mapping(address => ValidatorStatus) validatorsStatus;
-    // bool private initialized;
+    bool finalized;
+    mapping(address => ValidatorStatus) validatorsStatus;
+    bool private initialized;
+
+    // function MajorityList() {
+    //     pendingList = [0xd70db13e77dd64e7b3d53f2442912c26a68eaa7f, 0xefda3009f218dafcb61a621c0ae4155c145047f5];
+    //     initializeValidators();
+    // }
+
+    pendingList = [demoStorage.getAddress(keccak("",demoStorage.getUint()))];    
+    address addxx = pendingList[demoStorage.getUint(1)];
     
-    constructor(address _demoStorageAddress)  DemoBase(_demoStorageAddress) public {
+
+    constructor(address _demoStorageAddress)  DemoBase (_demoStorageAddress) public {
         version = 1;
         
         pendingList = [
@@ -28,138 +34,92 @@ contract MajorityList is ValidatorSetInterface {
             0xefda3009f218dafcb61a621c0ae4155c145047f5,
             0x88583fd765ec8d35bb748bb08c9a77ed1124d539
         ];
+        // pendingList = [demoStorage.getUint()];
 
         initializeValidators();
     }
+
     modifier uninitialized() {
-        if (getInitialized()) { revert(); }
+        // if (initialized) { 
+            // throw; 
+            // }
+        // _;
+
+        require(!initialized);
         _;
     }
-    modifier whenFinalized() {
-        if (!getFinalized()) { revert(); }
+    modifier when_finalized() {
+        // if (!finalized) { throw; }
+        // _;
+        require(finalized);
         _;
     }
-    modifier onlySystemAndNotFinalized() {
-        if (msg.sender != getSystemAddress() || getFinalized()) { revert(); }
+    modifier only_system_and_not_finalized() {
+        // if (msg.sender != SYSTEM_ADDRESS || finalized) { throw; }
+        // _;
+        require(msg.sender == addxx || finalized);
         _;
     }
-    modifier isValidator(address someone) {
-        // if (validatorsStatus[someone].isValidator) { 
-        if(getIsValidator(someone)){
-            _; 
-        }
+    modifier is_validator(address someone) {
+        // if (validatorsStatus[someone].isValidator) { _; }
+        require(!validatorsStatus[someone].isValidator);
+        _;
     }
-    modifier isNotValidator(address someone) {
-        // if (!validatorsStatus[someone].isValidator) {
-        if(!getIsValidator(someone)){
-            _; 
-        }
+    modifier is_not_validator(address someone) {
+        // if (!validatorsStatus[someone].isValidator) { _; }
+        require(validatorsStatus[someone].isValidator);
+        _;
     }
 
-    function initializeValidators() public uninitialized {        
+    function initializeValidators() public uninitialized {
         for (uint j = 0; j < pendingList.length; j++) {
             address validator = pendingList[j];
-            // validatorsStatus[validator] = ValidatorStatus({
-            //     isValidator: true,
-            //     index: j
-            // });
-            setIsValidator(validator,true);
-            setIndex(validator,j);
+            validatorsStatus[validator] = ValidatorStatus({
+                isValidator: true,
+                index: j
+            });
         }
-        // initialized = true;
-        setInitialized(true);        
+        initialized = true;
         validatorsList = pendingList;
-        // finalized = false;
-        setFinalized(false);
+        finalized = false;
     }
 
-    function initiateChange() private whenFinalized {
-        // finalized = false;
-        setFinalized(false);
-        InitiateChange(block.blockhash(block.number - 1), pendingList);
+    function initiateChange() private when_finalized {
+        finalized = false;
+        emit InitiateChange(blockhash(block.number - 1), pendingList);
     }
 
-    function finalizeChange() public onlySystemAndNotFinalized {
+    function finalizeChange() public only_system_and_not_finalized {
         validatorsList = pendingList;
-        // finalized = true;
-        setFinalized(true);
-        ChangeFinalized(validatorsList);
+        finalized = true;
+        emitChangeFinalized(validatorsList);
     }
 
-    function addValidator(address validator) public  isNotValidator(validator){
-        // validatorsStatus[validator].index = pendingList.length;
-        setIndex(validator,pendingList.length);
+    function addValidator(address validator) public is_not_validator(validator){
+        validatorsStatus[validator].index = pendingList.length;
         pendingList.push(validator);
-        // validatorsStatus[validator].isValidator = true;
-        setIsValidator(validator,true);
+        validatorsStatus[validator].isValidator = true;
         initiateChange();
     }
 
-    function removeValidator(address validator) public isValidator(validator){
-        // uint removedIndex = validatorsStatus[validator].index;
-        uint removedIndex = getIndex(validator);
+    function removeValidator(address validator) public is_validator(validator){
+        uint removedIndex = validatorsStatus[validator].index;
         uint lastIndex = pendingList.length-1;
         address lastValidator = pendingList[lastIndex];
 
         pendingList[removedIndex] = lastValidator;
-        // validatorsStatus[lastValidator].index = removedIndex;
-        setIndex(lastValidator,removedIndex);
+        validatorsStatus[lastValidator].index = removedIndex;
 
         delete pendingList[lastIndex];
         pendingList.length--;
 
-        // validatorsStatus[validator].index = 0;
-        // validatorsStatus[validator].isValidator = false;
-        setIndex(validator,0);
-        setIsValidator(validator,false);
+        validatorsStatus[validator].index = 0;
+        validatorsStatus[validator].isValidator = false;
         initiateChange();
 
     }
-
+    
     function getValidators() public view returns (address[]) {
         return validatorsList;
     }
-
-    // getter
-    function getSystemAddress() public view returns(address){
-        return demoStorage.getAddress(keccak256("validator.get.system.address"));
-    }
-
-    function getIsValidator(address _someAddress) public view returns(bool){
-        return demoStorage.getBool(keccak256("validator.get.is.validator",_someAddress));
-    }
-
-    function getIndex(address _someAddress) public view returns(uint256){
-        return demoStorage.getUint(keccak256("validator.get.index",_someAddress));
-    }
-
-    function getFinalized() public view returns(bool){
-        return demoStorage.getBool(keccak256("validator.get.finalized"));
-    }
-
-    function getInitialized() public view returns(bool){
-        return demoStorage.getBool(keccak256("validator.get.initialized"));
-    }
-
-    // setter
-    function setSystemAddress(address _systemAddress) public onlySuperUser{
-        demoStorage.setAddress(keccak256("validator.get.system.address"),_systemAddress);        
-    }
-
-    function setIsValidator(address _someAddress,bool _is) public onlySuperUser{
-        demoStorage.setBool(keccak256("validator.get.is.validator",_someAddress),_is);
-    }
-
-    function setIndex(address _someAddress,uint256 _index)public onlySuperUser{
-        demoStorage.setUint(keccak256("validator.get.index",_someAddress),_index);
-    }
-
-    function setFinalized(bool _finalized) public onlySuperUser{
-        demoStorage.setBool(keccak256("validator.get.finalized"),_finalized);
-    }
-
-    function setInitialized(bool _initialized) public onlySuperUser{
-        demoStorage.setBool(keccak256("validator.get.initialized"),_initialized);
-    }
-
 }

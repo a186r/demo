@@ -9,7 +9,8 @@ module.exports = {
       host: 'localhost',
       port: 8545,
       network_id: '*', // Match any network id
-      gas: 6725527,
+      gas: 6712388,
+      gasPrice: 65000000000,
     },
     // Local Parity Development 
     dev: {

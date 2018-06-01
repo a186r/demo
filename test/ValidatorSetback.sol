@@ -109,7 +109,7 @@ contract ValidatorSet is ValidatorSetInterface{
         pending.length--;
         // Reset address status.
         // delete pendingStatus[_validator].index;
-        delete getIndex(_validator);
+        //TODO: delete getIndex(_validator);
         setIsIn(_validator,false);
         // pendingStatus[_validator].isIn = false;
         initiateChange();
