@@ -106,14 +106,14 @@
     "absolutePath": "/home/a186r/develop/truffled/scdemo/interface/ValidatorSetInterface.sol",
     "exportedSymbols": {
       "ValidatorSetInterface": [
-        564
+        1030
       ]
     },
-    "id": 565,
+    "id": 1031,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 528,
+        "id": 994,
         "literals": [
           "solidity",
           "^",
@@ -121,16 +121,16 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:3"
+        "src": "0:24:4"
       },
       {
         "absolutePath": "/home/a186r/develop/truffled/scdemo/contracts/DemoBase.sol",
         "file": "../contracts/DemoBase.sol",
-        "id": 529,
+        "id": 995,
         "nodeType": "ImportDirective",
-        "scope": 565,
+        "scope": 1031,
         "sourceUnit": 109,
-        "src": "26:35:3",
+        "src": "26:35:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -140,19 +140,19 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 530,
+              "id": 996,
               "name": "DemoBase",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 108,
-              "src": "97:8:3",
+              "src": "97:8:4",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_DemoBase_$108",
                 "typeString": "contract DemoBase"
               }
             },
-            "id": 531,
+            "id": 997,
             "nodeType": "InheritanceSpecifier",
-            "src": "97:8:3"
+            "src": "97:8:4"
           }
         ],
         "contractDependencies": [
@@ -161,9 +161,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 564,
+        "id": 1030,
         "linearizedBaseContracts": [
-          564,
+          1030,
           108
         ],
         "name": "ValidatorSetInterface",
@@ -172,21 +172,21 @@
           {
             "anonymous": false,
             "documentation": "Issue this log event to signal a desired change in validator set.\n This will not lead to a change in active validator set until\n finalizeChange is called.\n\n    /// Only the last log event of any block can take effect.\n If a signal is issued while another is being finalized it may never\n take effect.\n\n    /// _parent_hash here should be the parent block hash, or the\n signal will not be recognized.",
-            "id": 538,
+            "id": 1004,
             "name": "InitiateChange",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 537,
+              "id": 1003,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 533,
+                  "id": 999,
                   "indexed": true,
                   "name": "_parent_hash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
-                  "src": "589:28:3",
+                  "scope": 1004,
+                  "src": "589:28:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -194,10 +194,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 532,
+                    "id": 998,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "589:7:3",
+                    "src": "589:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -208,12 +208,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 536,
+                  "id": 1002,
                   "indexed": false,
                   "name": "_new_set",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
-                  "src": "619:18:3",
+                  "scope": 1004,
+                  "src": "619:18:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -222,19 +222,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 534,
+                      "id": 1000,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "619:7:3",
+                      "src": "619:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 535,
+                    "id": 1001,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "619:9:3",
+                    "src": "619:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -244,14 +244,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "588:50:3"
+              "src": "588:50:4"
             },
-            "src": "568:71:3"
+            "src": "568:71:4"
           },
           {
             "body": null,
             "documentation": "Get current validator set (last enacted or initial if no changes ever made)",
-            "id": 544,
+            "id": 1010,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -259,23 +259,23 @@
             "name": "getValidators",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 539,
+              "id": 1005,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "751:2:3"
+              "src": "751:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 543,
+              "id": 1009,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 542,
+                  "id": 1008,
                   "name": "_validators",
                   "nodeType": "VariableDeclaration",
-                  "scope": 544,
-                  "src": "775:21:3",
+                  "scope": 1010,
+                  "src": "775:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -284,19 +284,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 540,
+                      "id": 1006,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "775:7:3",
+                      "src": "775:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 541,
+                    "id": 1007,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "775:9:3",
+                    "src": "775:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -306,10 +306,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "774:23:3"
+              "src": "774:23:4"
             },
-            "scope": 564,
-            "src": "729:69:3",
+            "scope": 1030,
+            "src": "729:69:4",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -317,7 +317,7 @@
           {
             "body": null,
             "documentation": "Called when an initiated change reaches finality and is activated.\n Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)\n\n    /// Also called when the contract is first enabled for consensus. In this case,\n the \"change\" finalized is the activation of the initial set.",
-            "id": 547,
+            "id": 1013,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -325,20 +325,20 @@
             "name": "finalizeChange",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 545,
+              "id": 1011,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1132:2:3"
+              "src": "1132:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 546,
+              "id": 1012,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1141:0:3"
+              "src": "1141:0:4"
             },
-            "scope": 564,
-            "src": "1109:33:3",
+            "scope": 1030,
+            "src": "1109:33:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -346,7 +346,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 554,
+            "id": 1020,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -354,16 +354,16 @@
             "name": "reportBenign",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 552,
+              "id": 1018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 549,
+                  "id": 1015,
                   "name": "validator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "1295:17:3",
+                  "scope": 1020,
+                  "src": "1295:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -371,10 +371,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 548,
+                    "id": 1014,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1295:7:3",
+                    "src": "1295:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -385,11 +385,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 551,
+                  "id": 1017,
                   "name": "blockNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "1314:19:3",
+                  "scope": 1020,
+                  "src": "1314:19:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -397,10 +397,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 550,
+                    "id": 1016,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1314:7:3",
+                    "src": "1314:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -410,17 +410,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1294:40:3"
+              "src": "1294:40:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 553,
+              "id": 1019,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1341:0:3"
+              "src": "1341:0:4"
             },
-            "scope": 564,
-            "src": "1273:69:3",
+            "scope": 1030,
+            "src": "1273:69:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -428,7 +428,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 563,
+            "id": 1029,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -436,16 +436,16 @@
             "name": "reportMalicious",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 561,
+              "id": 1027,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 556,
+                  "id": 1022,
                   "name": "validator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1372:17:3",
+                  "scope": 1029,
+                  "src": "1372:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -453,10 +453,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 555,
+                    "id": 1021,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1372:7:3",
+                    "src": "1372:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -467,11 +467,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 558,
+                  "id": 1024,
                   "name": "blockNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1391:19:3",
+                  "scope": 1029,
+                  "src": "1391:19:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -479,10 +479,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 557,
+                    "id": 1023,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1391:7:3",
+                    "src": "1391:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -493,11 +493,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 560,
+                  "id": 1026,
                   "name": "proof",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1412:11:3",
+                  "scope": 1029,
+                  "src": "1412:11:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -505,10 +505,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 559,
+                    "id": 1025,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1412:5:3",
+                    "src": "1412:5:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -518,40 +518,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1371:53:3"
+              "src": "1371:53:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 562,
+              "id": 1028,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1431:0:3"
+              "src": "1431:0:4"
             },
-            "scope": 564,
-            "src": "1347:85:3",
+            "scope": 1030,
+            "src": "1347:85:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 565,
-        "src": "63:1371:3"
+        "scope": 1031,
+        "src": "63:1371:4"
       }
     ],
-    "src": "0:1434:3"
+    "src": "0:1434:4"
   },
   "legacyAST": {
     "absolutePath": "/home/a186r/develop/truffled/scdemo/interface/ValidatorSetInterface.sol",
     "exportedSymbols": {
       "ValidatorSetInterface": [
-        564
+        1030
       ]
     },
-    "id": 565,
+    "id": 1031,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 528,
+        "id": 994,
         "literals": [
           "solidity",
           "^",
@@ -559,16 +559,16 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:3"
+        "src": "0:24:4"
       },
       {
         "absolutePath": "/home/a186r/develop/truffled/scdemo/contracts/DemoBase.sol",
         "file": "../contracts/DemoBase.sol",
-        "id": 529,
+        "id": 995,
         "nodeType": "ImportDirective",
-        "scope": 565,
+        "scope": 1031,
         "sourceUnit": 109,
-        "src": "26:35:3",
+        "src": "26:35:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -578,19 +578,19 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 530,
+              "id": 996,
               "name": "DemoBase",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 108,
-              "src": "97:8:3",
+              "src": "97:8:4",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_DemoBase_$108",
                 "typeString": "contract DemoBase"
               }
             },
-            "id": 531,
+            "id": 997,
             "nodeType": "InheritanceSpecifier",
-            "src": "97:8:3"
+            "src": "97:8:4"
           }
         ],
         "contractDependencies": [
@@ -599,9 +599,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 564,
+        "id": 1030,
         "linearizedBaseContracts": [
-          564,
+          1030,
           108
         ],
         "name": "ValidatorSetInterface",
@@ -610,21 +610,21 @@
           {
             "anonymous": false,
             "documentation": "Issue this log event to signal a desired change in validator set.\n This will not lead to a change in active validator set until\n finalizeChange is called.\n\n    /// Only the last log event of any block can take effect.\n If a signal is issued while another is being finalized it may never\n take effect.\n\n    /// _parent_hash here should be the parent block hash, or the\n signal will not be recognized.",
-            "id": 538,
+            "id": 1004,
             "name": "InitiateChange",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 537,
+              "id": 1003,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 533,
+                  "id": 999,
                   "indexed": true,
                   "name": "_parent_hash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
-                  "src": "589:28:3",
+                  "scope": 1004,
+                  "src": "589:28:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -632,10 +632,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 532,
+                    "id": 998,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "589:7:3",
+                    "src": "589:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -646,12 +646,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 536,
+                  "id": 1002,
                   "indexed": false,
                   "name": "_new_set",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
-                  "src": "619:18:3",
+                  "scope": 1004,
+                  "src": "619:18:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -660,19 +660,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 534,
+                      "id": 1000,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "619:7:3",
+                      "src": "619:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 535,
+                    "id": 1001,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "619:9:3",
+                    "src": "619:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -682,14 +682,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "588:50:3"
+              "src": "588:50:4"
             },
-            "src": "568:71:3"
+            "src": "568:71:4"
           },
           {
             "body": null,
             "documentation": "Get current validator set (last enacted or initial if no changes ever made)",
-            "id": 544,
+            "id": 1010,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -697,23 +697,23 @@
             "name": "getValidators",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 539,
+              "id": 1005,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "751:2:3"
+              "src": "751:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 543,
+              "id": 1009,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 542,
+                  "id": 1008,
                   "name": "_validators",
                   "nodeType": "VariableDeclaration",
-                  "scope": 544,
-                  "src": "775:21:3",
+                  "scope": 1010,
+                  "src": "775:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -722,19 +722,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 540,
+                      "id": 1006,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "775:7:3",
+                      "src": "775:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 541,
+                    "id": 1007,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "775:9:3",
+                    "src": "775:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -744,10 +744,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "774:23:3"
+              "src": "774:23:4"
             },
-            "scope": 564,
-            "src": "729:69:3",
+            "scope": 1030,
+            "src": "729:69:4",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -755,7 +755,7 @@
           {
             "body": null,
             "documentation": "Called when an initiated change reaches finality and is activated.\n Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)\n\n    /// Also called when the contract is first enabled for consensus. In this case,\n the \"change\" finalized is the activation of the initial set.",
-            "id": 547,
+            "id": 1013,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -763,20 +763,20 @@
             "name": "finalizeChange",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 545,
+              "id": 1011,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1132:2:3"
+              "src": "1132:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 546,
+              "id": 1012,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1141:0:3"
+              "src": "1141:0:4"
             },
-            "scope": 564,
-            "src": "1109:33:3",
+            "scope": 1030,
+            "src": "1109:33:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -784,7 +784,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 554,
+            "id": 1020,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -792,16 +792,16 @@
             "name": "reportBenign",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 552,
+              "id": 1018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 549,
+                  "id": 1015,
                   "name": "validator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "1295:17:3",
+                  "scope": 1020,
+                  "src": "1295:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -809,10 +809,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 548,
+                    "id": 1014,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1295:7:3",
+                    "src": "1295:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -823,11 +823,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 551,
+                  "id": 1017,
                   "name": "blockNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "1314:19:3",
+                  "scope": 1020,
+                  "src": "1314:19:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -835,10 +835,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 550,
+                    "id": 1016,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1314:7:3",
+                    "src": "1314:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -848,17 +848,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1294:40:3"
+              "src": "1294:40:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 553,
+              "id": 1019,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1341:0:3"
+              "src": "1341:0:4"
             },
-            "scope": 564,
-            "src": "1273:69:3",
+            "scope": 1030,
+            "src": "1273:69:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -866,7 +866,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 563,
+            "id": 1029,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -874,16 +874,16 @@
             "name": "reportMalicious",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 561,
+              "id": 1027,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 556,
+                  "id": 1022,
                   "name": "validator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1372:17:3",
+                  "scope": 1029,
+                  "src": "1372:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -891,10 +891,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 555,
+                    "id": 1021,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1372:7:3",
+                    "src": "1372:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -905,11 +905,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 558,
+                  "id": 1024,
                   "name": "blockNumber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1391:19:3",
+                  "scope": 1029,
+                  "src": "1391:19:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -917,10 +917,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 557,
+                    "id": 1023,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1391:7:3",
+                    "src": "1391:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -931,11 +931,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 560,
+                  "id": 1026,
                   "name": "proof",
                   "nodeType": "VariableDeclaration",
-                  "scope": 563,
-                  "src": "1412:11:3",
+                  "scope": 1029,
+                  "src": "1412:11:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -943,10 +943,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 559,
+                    "id": 1025,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1412:5:3",
+                    "src": "1412:5:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -956,27 +956,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1371:53:3"
+              "src": "1371:53:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 562,
+              "id": 1028,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1431:0:3"
+              "src": "1431:0:4"
             },
-            "scope": 564,
-            "src": "1347:85:3",
+            "scope": 1030,
+            "src": "1347:85:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 565,
-        "src": "63:1371:3"
+        "scope": 1031,
+        "src": "63:1371:4"
       }
     ],
-    "src": "0:1434:3"
+    "src": "0:1434:4"
   },
   "compiler": {
     "name": "solc",
@@ -984,5 +984,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-01T10:15:32.092Z"
+  "updatedAt": "2018-06-04T06:07:47.697Z"
 }

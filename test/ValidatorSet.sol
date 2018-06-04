@@ -68,20 +68,20 @@ contract MajorityList is ValidatorSetInterface {
     }
 
     function initializeValidators() public uninitialized {        
-        // for (uint j = 0; j < pendingList.length; j++) {
-        //     address validator = pendingList[j];
-        //     // validatorsStatus[validator] = ValidatorStatus({
-        //     //     isValidator: true,
-        //     //     index: j
-        //     // });
-        //     setIsValidator(validator,true);
-        //     setIndex(validator,j);
-        // }
-        // // initialized = true;
-        // setInitialized(true);        
-        // validatorsList = pendingList;
-        // // finalized = false;
-        // setFinalized(false);
+        for (uint j = 0; j < pendingList.length; j++) {
+            address validator = pendingList[j];
+            // validatorsStatus[validator] = ValidatorStatus({
+            //     isValidator: true,
+            //     index: j
+            // });
+            setIsValidator(validator,true);
+            setIndex(validator,j);
+        }
+        // initialized = true;
+        setInitialized(true);        
+        validatorsList = pendingList;
+        // finalized = false;
+        setFinalized(false);
     }
 
     function initiateChange() private whenFinalized {

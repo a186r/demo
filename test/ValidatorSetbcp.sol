@@ -20,13 +20,16 @@ contract MajorityList is ValidatorSetInterface {
     //     initializeValidators();
     // }
 
-    pendingList = [demoStorage.getAddress(keccak("",demoStorage.getUint()))];    
-    address addxx = pendingList[demoStorage.getUint(1)];
+    // address addxx = pendingList[demoStorage.getUint(1)];
     
 
     constructor(address _demoStorageAddress)  DemoBase (_demoStorageAddress) public {
         version = 1;
+
+        // pendingList = [demoStorage.getAddress(keccak256("",demoStorage.getUint(keccak256("12121"))))];    
         
+        // pendingList = new Address()[demoStorage.getPendingListSize()];
+
         pendingList = [
             0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e,
             0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2,
@@ -34,9 +37,13 @@ contract MajorityList is ValidatorSetInterface {
             0xefda3009f218dafcb61a621c0ae4155c145047f5,
             0x88583fd765ec8d35bb748bb08c9a77ed1124d539
         ];
-        // pendingList = [demoStorage.getUint()];
 
         initializeValidators();
+    }
+
+    function Test() public {
+
+        
     }
 
     modifier uninitialized() {
@@ -92,7 +99,7 @@ contract MajorityList is ValidatorSetInterface {
     function finalizeChange() public only_system_and_not_finalized {
         validatorsList = pendingList;
         finalized = true;
-        emitChangeFinalized(validatorsList);
+        emit ChangeFinalized(validatorsList);
     }
 
     function addValidator(address validator) public is_not_validator(validator){
@@ -122,4 +129,9 @@ contract MajorityList is ValidatorSetInterface {
     function getValidators() public view returns (address[]) {
         return validatorsList;
     }
+
+    // getter
+
+    // setter
+
 }

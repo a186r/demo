@@ -12,7 +12,8 @@
 
 `> TestContract.deployed().then(inst => { TestContractInstance = inst })`
 
-node0-encode
-{"jsonrpc":"2.0","result":"enode://4a0f4a20414014caae6b9ac2dbc1d9b607b72c28ad9d66d685c86cb65fc11a79591c4eeac79ac4fdab0a4677979ae0607a14118f7a2fa18a2d6f848f5132ceaa@10.0.7.4:30300","id":0}
+{"jsonrpc":"2.0","result":"enode://1898cbf91b1fcdc8916e6143a09578bb3cb669658de6bdcff5e290a10f3fd8bfd71bbe87c73462bb309cbfb00cfaffed93de0c2e471a13cf137c0f409e4b86f3@192.168.1.172:30300","id":0}
+
+curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://1898cbf91b1fcdc8916e6143a09578bb3cb669658de6bdcff5e290a10f3fd8bfd71bbe87c73462bb309cbfb00cfaffed93de0c2e471a13cf137c0f409e4b86f3@192.168.1.172:30300"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 
 brussels unroasted retorted ambiguity primate rearrange elusive alike urging cornfield math icing
