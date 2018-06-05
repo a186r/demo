@@ -17,7 +17,8 @@ contract MajoritySet is ValidatorSetInterface {
 		// 支持这个地址的验证地址
         // AddressVotes.Data support;
             // 如果这个地址本身是验证人，它支持了哪些地址
-            // TODO:address[] supported;
+        // TODO:address[] supported;
+            // address[] memory nodes = new address[](rocketStorage.getUint(keccak256("nodes.total")));
 		// Initial benign misbehaviour time tracker.
         // mapping(address => uint) firstBenign;
 		// Repeated benign misbehaviour counter.
@@ -126,16 +127,17 @@ contract MajoritySet is ValidatorSetInterface {
     //     return validatorsStatus[validator].supported;
     // }
 
-	// 投票支持验证者
+	// 投票支持
     function addSupport(address validator) public only_validator not_voted(validator) {
         newStatus(validator);
-        AddressVotes.insert(validatorsStatus[validator].support, msg.sender);
+        // address[] memory supported = new address[](demoStorage.getUint(keccak256("nodes.total")));
+        AddressVotes.insert(validator, msg.sender);
         validatorsStatus[msg.sender].supported.push(validator);
         addValidator(validator);
         emit Support(msg.sender, validator, true);
     }
 
-	// 取消支持验证者
+	// 取消支持
     function removeSupport(address sender, address validator) private {
         require(AddressVotes.remove(validatorsStatus[validator].support, sender));
         emit Support(sender, validator, false);
@@ -297,7 +299,9 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     modifier not_voted(address validator) {
-        require(!AddressVotes.contains(validatorsStatus[validator].support, msg.sender));
+        // require(!AddressVotes.contains(validatorsStatus[validator].support, msg.sender));
+        // _;
+        require(!AddressVotes.contains(msg.sender));
         _;
     }
 
