@@ -4,6 +4,7 @@ import "../interface/ValidatorSetInterface.sol";
 import "./AddressVotes.sol";
 
 contract MajoritySet is ValidatorSetInterface {
+    
 	// EVENTS
     event Report(address indexed reporter, address indexed reported, bool indexed malicious);
     event Support(address indexed supporter, address indexed supported, bool indexed added);
@@ -25,13 +26,13 @@ contract MajoritySet is ValidatorSetInterface {
         // AddressVotes.Data benignMisbehaviour;
     // }
 
-    address constant SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
+    // address constant SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
 	// Support can not be added once this number of validators is reached.
     // uint public constant MAX_VALIDATORS = 30;
 	// Time after which the validators will report a validator as malicious.
     // uint public constant MAX_INACTIVITY = 6 hours;
 	// Ignore misbehaviour older than this number of blocks.
-    uint public constant RECENT_BLOCKS = 20;
+    // uint public constant RECENT_BLOCKS = 20;
 
 // STATE
 
@@ -328,7 +329,7 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     modifier isRecent(uint _blockNumber) {
-        require(block.number <= _blockNumber + RECENT_BLOCKS);
+        require(block.number <= _blockNumber + setRecentBlocks());
         _;
     }
 
@@ -364,6 +365,10 @@ contract MajoritySet is ValidatorSetInterface {
         return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)));
     }
 
+    function getSystemAddress(address _addr) public view returns(address){
+        return demoStorage.getAddress(keccak256(abi.encodePacked("majority.set.system.address")));
+    }
+
 
     // setter
     function setInitialSupport(uint256 _count) public onlySuperUser(){
@@ -382,7 +387,11 @@ contract MajoritySet is ValidatorSetInterface {
         demoStorage.setUint(keccak256(abi.encodePacked("majority.set.index",_addr)),_index);
     }
 
-    function setRecentBlocks(address _addr,uint256 _blocks) public onlySuperUser(){
-        demoStorage.setUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)),_blocks);
+    function setRecentBlocks(uint256 _blocks) public onlySuperUser(){
+        demoStorage.setUint(keccak256(abi.encodePacked("majority.set.recent.blocks")),_blocks);
+    }
+
+    function setSystemAddress(address _addr) public onlySuperUser(){
+        demoStorage.setAddress(keccak256(abi.encodePacked("majority.set.system.address")));
     }
 }
