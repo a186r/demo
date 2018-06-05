@@ -1,6 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
+// import "./AddressVotes.sol";
 import "./AddressVotes.sol";
 
 contract MajoritySet is ValidatorSetInterface {
@@ -16,8 +17,8 @@ contract MajoritySet is ValidatorSetInterface {
             // uint index;
 		// 支持这个地址的验证地址
         // AddressVotes.Data support;
-            // 如果这个地址本身是验证人，它支持了哪些地址
-        // TODO:address[] supported;
+// 地址投票给哪些地址
+// TODO:address[] supported;
             // address[] memory nodes = new address[](rocketStorage.getUint(keccak256("nodes.total")));
 		// Initial benign misbehaviour time tracker.
         // mapping(address => uint) firstBenign;
@@ -105,23 +106,25 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
 	// Log desire to change the current list.
-    function initiateChange() private when_finalized {
+    function initiateChange() private whenFinalized {
         finalized = false;
 
-        // TODO:
+        // TODO: blockhash被弃用
         emit InitiateChange(block.blockhash(block.number - 1), pendingList);
     }
 
-    function finalizeChange() public only_system_and_not_finalized {
+    function finalizeChange() public onlySystemAndNotFinalized {
         validatorsList = pendingList;
         finalized = true;
         emit ChangeFinalized(validatorsList);
     }
 
 	// 查询验证人地址的支持数
-    function getSupport(address validator) public view returns (uint) {
+    function getSupport(address _validator) public view returns (uint) {
         // return AddressVotes.count(validatorsStatus[validator].support);
-        return AddressVotes.getCount(keccak256(abi.encodePacked("addressvote.count",validator)));
+        // return AddressVotes.getCount(validator);
+        return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_validator)));
+
     }
 
     // 获取被支持数
@@ -130,14 +133,14 @@ contract MajoritySet is ValidatorSetInterface {
     // }
 
 	// 投票支持
-    function addSupport(address validator) public only_validator not_voted(validator) {
-        newStatus(validator);
+    function addSupport(address _validator) public onlyValidator notVoted(_validator) {
+        newStatus(_validator);
         // address[] memory supported = new address[](demoStorage.getUint(keccak256("nodes.total")));
-        AddressVotes.insert(validator, msg.sender);
+        AddressVotes.insert(_validator, msg.sender);
         // validatorsStatus[msg.sender].supported.push(validator);
         // 如果多数人支持，就添加为验证人
-        addValidator(validator);
-        emit Support(msg.sender, validator, true);
+        addValidator(_validator);
+        emit Support(msg.sender, _validator, true);
     }
 
 	// 取消支持
@@ -149,7 +152,7 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     // 设置初始状态
-    function newStatus(address _validator) private has_no_votes(_validator){
+    function newStatus(address _validator) private hasNoVotes(_validator){
         setIsValidator(_validator,false);
         setIndex(_validator,pendingList.length);
     }
@@ -214,38 +217,47 @@ contract MajoritySet is ValidatorSetInterface {
     // }
 
 	// 如果多数人支持，添加为验证人
-    function addValidator(address validator) public is_not_validator(validator) has_high_support(validator) {
-        validatorsStatus[validator].index = pendingList.length;
+    function addValidator(address validator) public isNotValidator(validator) hasHighSupport(validator) {
+        // validatorsStatus[validator].index = pendingList.length;
+        setIndex(validator,pendingList.length);        
         pendingList.push(validator);
-        validatorsStatus[validator].isValidator = true;
+        // validatorsStatus[validator].isValidator = true;
+        setIsValidator(validator,true);
 		// 新加入的验证人先投票给自己
-        AddressVotes.insert(validatorsStatus[validator].support, validator);
-        validatorsStatus[validator].supported.push(validator);
+        AddressVotes.insert(validator, validator);
+        // validatorsStatus[validator].supported.push(validator);
         initiateChange();
     }
 
 	// 移除验证人
 	// 也可以调用这个方法清除支持率较低的验证人
-    function removeValidator(address validator) public is_validator(validator) has_low_support(validator) {
-        uint removedIndex = validatorsStatus[validator].index;
+    function removeValidator(address _validator) public isValidator(_validator) hasLowSupport(_validator) {
+        // uint removedIndex = validatorsStatus[validator].index;
+        uint removedIndex = getIndex(_validator);
 		// 不能移除最后一个验证人
         uint lastIndex = pendingList.length-1;
         address lastValidator = pendingList[lastIndex];
 		// Override the removed validator with the last one.
         pendingList[removedIndex] = lastValidator;
 		// Update the index of the last validator.
-        validatorsStatus[lastValidator].index = removedIndex;
+        // validatorsStatus[lastValidator].index = removedIndex;
+        getIndex(lastValidator) = removedIndex;
         delete pendingList[lastIndex];
         pendingList.length--;
 		// 重置状态
-        validatorsStatus[validator].index = 0;
-        validatorsStatus[validator].isValidator = false;
-		// 支持者的投票
-        address[] storage toRemove = validatorsStatus[validator].supported;
-        for (uint i = 0; i < toRemove.length; i++) {
-            removeSupport(validator, toRemove[i]);
-        }
-        delete validatorsStatus[validator].supported;
+        // validatorsStatus[_validator].index = 0;
+        setIndex(_validator) = 0;
+        // validatorsStatus[_validator].isValidator = false;
+        setIsValidator(_validator,false);
+		
+        // 移除当初的支持者
+        // address[] storage toRemove = validatorsStatus[_validator].supported;
+        // for (uint i = 0; i < toRemove.length; i++) {
+            // removeSupport(_validator, toRemove[i]);
+        // }
+        // delete validatorsStatus[_validator].supported;
+        
+        // 更新列表
         initiateChange();
     }
 
@@ -255,29 +267,29 @@ contract MajoritySet is ValidatorSetInterface {
         return getSupport(validator) > pendingList.length/2;
     }
 
-    function firstBenignReported(address reporter, address validator) public view returns (uint) {
-        return validatorsStatus[validator].firstBenign[reporter];
-    }
+    // function firstBenignReported(address reporter, address validator) public view returns (uint) {
+        // return validatorsStatus[validator].firstBenign[reporter];
+    // }
 
-    modifier has_high_support(address validator) {
+    modifier hasHighSupport(address validator) {
         if (highSupport(validator)) { _; }
     }
 
-    modifier has_low_support(address validator) {
+    modifier hasLowSupport(address validator) {
         if (!highSupport(validator)) { _; }
     }
 
-    modifier has_not_benign_misbehaved(address validator) {
-        if (firstBenignReported(msg.sender, validator) == 0) { _; }
-    }
+    // modifier has_not_benign_misbehaved(address validator) {
+        // if (firstBenignReported(msg.sender, validator) == 0) { _; }
+    // }
 
-    modifier has_benign_misbehaved(address validator) {
-        if (firstBenignReported(msg.sender, validator) > 0) { _; }
-    }
+    // modifier has_benign_misbehaved(address validator) {
+    //     if (firstBenignReported(msg.sender, validator) > 0) { _; }
+    // }
 
-    modifier has_repeatedly_benign_misbehaved(address validator) {
-        if (firstBenignReported(msg.sender, validator) - now > MAX_INACTIVITY) { _; }
-    }
+    // modifier has_repeatedly_benign_misbehaved(address validator) {
+    //     if (firstBenignReported(msg.sender, validator) - now > MAX_INACTIVITY) { _; }
+    // }
 
     // modifier agreed_on_repeated_benign(address validator) {
     //     if (getRepeatedBenign(validator) > pendingList.length/2) { _; }
@@ -288,86 +300,48 @@ contract MajoritySet is ValidatorSetInterface {
     //     _;
     // }
 
-    modifier only_validator() {
-        require(validatorsStatus[msg.sender].isValidator);
+    modifier onlyValidator() {
+        require(getIsValidator(msg.sender));
         _;
     }
 
-    modifier is_validator(address someone) {
-        if (validatorsStatus[someone].isValidator) { _; }
+    modifier isValidator(address _someone) {
+        if(getIsValidator(_someone)){
+            _;
+        }
     }
 
-    modifier is_not_validator(address someone) {
-        if (!validatorsStatus[someone].isValidator) { _; }
+    modifier isNotValidator(address _someone) {
+        if(getIsValidator(_someone)){
+            _;
+        }
     }
 
-    modifier not_voted(address validator) {
-        // require(!AddressVotes.contains(validatorsStatus[validator].support, msg.sender));
-        // _;
-        require(!AddressVotes.contains(msg.sender));
+    modifier notVoted(address _validator) {
+        require(!AddressVotes.contains(_validator,msg.sender));
         _;
     }
 
-    modifier has_no_votes(address validator) {
-        if (AddressVotes.count(validatorsStatus[validator].support) == 0) { _; }
+    modifier hasNoVotes(address _validator){
+        if(AddressVotes.getCount(_validator) == 0){
+            _;
+        }
     }
 
-    modifier is_recent(uint blockNumber) {
-        require(block.number <= blockNumber + RECENT_BLOCKS);
+    modifier isRecent(uint _blockNumber) {
+        require(block.number <= _blockNumber + RECENT_BLOCKS);
         _;
     }
 
-    modifier only_system_and_not_finalized() {
+    modifier onlySystemAndNotFinalized() {
         require(msg.sender == SYSTEM_ADDRESS && !finalized);
         _;
     }
 
-    modifier when_finalized() {
+    modifier whenFinalized() {
         require(finalized);
         _;
     }
-
-    //     struct ValidatorStatus {
-	// 	// Is this a validator.
-    //     bool isValidator;
-	// 	// Index in the validatorList.
-    //     uint index;
-
-	// 	// Validator addresses which supported the address.
-    //     AddressVotes.Data support;
-
-	// 	// Keeps track of the votes given out while the address is a validator.
-    //     address[] supported;
-	// 	// Initial benign misbehaviour time tracker.
-    //     mapping(address => uint) firstBenign;
-	// 	// Repeated benign misbehaviour counter.
-    //     AddressVotes.Data benignMisbehaviour;
-    // }
-
-    // // getter
-    // function getIsValidator(address _addr) public view returns(bool){
-    //     return demoStorage.getBool(keccak256("majorityset.get.is.validator",_addr));
-    // }
-
-    // function getIndex(address _addr) public view returns(bool){
-    //     return demoStorage.getUint(keccak256("majorityset.get.index",_addr));
-    // }
-
-
-
-    // // setter
-    // function setIsValidator(address _addr,bool _is) public onlySuperUser{
-    //     demoStorage.setBool(keccak256("majorityset.get.is.validator",_addr),_addr);
-    // }
-
-    // function getIndex(address _addr,uint256 _index) public onlySuperUser{
-    //     demoStorage.setUint(keccak256("majorityset.get.index",_index),_index);
-    // }
-
-
-        // bool isValidator;
-        // // 验证人index
-        // uint index;
 
     // getter
     // 初始支持数
