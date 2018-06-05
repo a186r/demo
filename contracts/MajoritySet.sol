@@ -1,7 +1,6 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
-// import "./AddressVotes.sol";
 import "./AddressVotes.sol";
 
 contract MajoritySet is ValidatorSetInterface {
