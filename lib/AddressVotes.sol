@@ -55,7 +55,7 @@ contract AddressVotes is DemoBase{
 	// 撤回投票
     function remove(address _voter) public voted (_voter) returns (bool){
         setCount(_voter,getCount(_voter)-1);
-        setInserted(_voter,true);
+        setInserted(_voter,false);
     }
 
     // function remove(Data storage self, address voter) public returns (bool) {

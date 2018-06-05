@@ -9,20 +9,20 @@ contract MajoritySet is ValidatorSetInterface {
     event Support(address indexed supporter, address indexed supported, bool indexed added);
     event ChangeFinalized(address[] current_set);
 
-    struct ValidatorStatus {
-        // 是否是验证人
-        bool isValidator;
-        // 验证人index
-        uint index;
+    // struct ValidatorStatus {
+            // // 是否是验证人
+            // bool isValidator;
+            // // 验证人index
+            // uint index;
 		// 支持这个地址的验证地址
         // AddressVotes.Data support;
-		// 如果这个地址本身是验证人，它支持了哪些地址
-        address[] supported;
+            // 如果这个地址本身是验证人，它支持了哪些地址
+            // TODO:address[] supported;
 		// Initial benign misbehaviour time tracker.
         // mapping(address => uint) firstBenign;
 		// Repeated benign misbehaviour counter.
         // AddressVotes.Data benignMisbehaviour;
-    }
+    // }
 
     address constant SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
 	// Support can not be added once this number of validators is reached.
@@ -41,33 +41,62 @@ contract MajoritySet is ValidatorSetInterface {
 	// 最后的更改是否最终确定了
     bool finalized;
 	// 每个地址的验证人状态
-    mapping(address => ValidatorStatus) validatorsStatus;
+        // mapping(address => ValidatorStatus) validatorsStatus;
 
-	// Used to lower the constructor cost.节约gas
-    AddressVotes.Data initialSupport;
+	// 节约gas
+    // AddressVotes.Data initialSupport;
 
-	// Each validator is initially supported by all others.
-    function MajoritySet() public {
+    constructor (address _demoStorageAddress) DemoBase (_demoStorageAddress) public {
+        version = 1;
         pendingList.push(0xf5777f8133aae2734396ab1d43ca54ad11bfb737);
+        setInitialSupport(pendingList.length);
 
-        initialSupport.count = pendingList.length;
         for (uint i = 0; i < pendingList.length; i++) {
             address supporter = pendingList[i];
-            initialSupport.inserted[supporter] = true;
+            setInitialSupportInserted(supporter,true);
         }
 
         for (uint j = 0; j < pendingList.length; j++) {
             address validator = pendingList[j];
-            validatorsStatus[validator] = ValidatorStatus({
-                isValidator: true,
-                index: j,
-                support: initialSupport,
-                supported: pendingList
-                // benignMisbehaviour: AddressVotes.Data({ count: 0 })
-            });
+
+            setIsValidator(validator,true);
+            setIndex(validator,j);
         }
+
         validatorsList = pendingList;
+        
     }
+
+	// Each validator is initially supported by all others.
+    // function MajoritySet() public {
+    //     pendingList.push(0xf5777f8133aae2734396ab1d43ca54ad11bfb737);
+
+    //     // initialSupport.count = pendingList.length;
+    //     setInitialSupport(pendingList.length);
+        
+    //     for (uint i = 0; i < pendingList.length; i++) {
+    //         address supporter = pendingList[i];
+    //         // initialSupport.inserted[supporter] = true;
+    //         setInitialSupportInserted(supporter,true);
+    //     }
+
+    //     for (uint j = 0; j < pendingList.length; j++) {
+    //         address validator = pendingList[j];
+            
+    //         // validatorsStatus[validator] = ValidatorStatus({
+    //         //     isValidator: true,
+    //         //     index: j,
+    //         //     support: initialSupport,
+    //         //     supported: pendingList
+    //         //     // benignMisbehaviour: AddressVotes.Data({ count: 0 })
+    //         // });
+
+    //         setIsValidator(validator,true);
+    //         setIndex(validator,j);
+    //     }
+
+    //     validatorsList = pendingList;
+    // }
 
 	// 获取验证人列表
     function getValidators() public view returns (address[]) {
@@ -88,12 +117,14 @@ contract MajoritySet is ValidatorSetInterface {
 
 	// 查询验证人地址的支持数
     function getSupport(address validator) public view returns (uint) {
-        return AddressVotes.count(validatorsStatus[validator].support);
+        return demoStorage.getUint(keccak256("addressvote.count",validator));
+        // return AddressVotes.count(validatorsStatus[validator].support);
     }
 
-    function getSupported(address validator) public view returns (address[]) {
-        return validatorsStatus[validator].supported;
-    }
+    // 获取被支持数
+    // function getSupported(address validator) public view returns (address[]) {
+    //     return validatorsStatus[validator].supported;
+    // }
 
 	// 投票支持验证者
     function addSupport(address validator) public only_validator not_voted(validator) {
@@ -110,6 +141,12 @@ contract MajoritySet is ValidatorSetInterface {
         emit Support(sender, validator, false);
         // TODO:如果没有足够的支持者，就将验证者移除
         // removeValidator(validator);
+    }
+
+    // 设置初始状态
+    function newStatus(address _validator) private has_no_votes(_validator){
+        setIsValidator(_validator,false);
+        setIndex(_validator,pendingList.length);
     }
 
 	// MALICIOUS BEHAVIOUR HANDLING
@@ -320,4 +357,52 @@ contract MajoritySet is ValidatorSetInterface {
     //     demoStorage.setUint(keccak256("majorityset.get.index",_index),_index);
     // }
 
+
+        // bool isValidator;
+        // // 验证人index
+        // uint index;
+
+    // getter
+    // 初始支持数
+    function getInitialSupport () public view returns(uint256) {
+        return demoStorage.getUint(keccak256("majority.set.initialsupport"));
+    }
+
+    function getInitialSupportInserted(address _addr) public view returns(bool){
+        return demoStorage.getBool(keccak256("majority.set.initialsupport.inserted",_addr));
+    }
+
+    function getIsValidator(address _addr) public view returns(bool){
+        return demoStorage.getBool(keccak256("majority.set.is.validator",_addr));
+    }
+
+    function getIndex(address _addr) public view returns(bool){
+        return demoStorage.getUint(keccak256("majority.set.index",_addr));
+    }
+
+    function getRecentBlocks(address _addr) public view returns(uint256){
+        return demoStorage.getUint(keccak256("majority.set.recent.blocks",_addr));
+    }
+
+
+    // setter
+    function setInitialSupport(uint256 _count) public onlySuperUser(){
+        demoStorage.setUint(keccak256("majority.set.initialsupport"),_count);
+    }
+
+    function setInitialSupportInserted(address _addr,bool _inserted) public onlySuperUser(){
+        demoStorage.setBool(keccak256("majority.set.initialsupport.inserted",_addr),_inserted);
+    }
+
+    function setIsValidator(address _addr,bool _isvalidator) public onlySuperUser(){
+        demoStorage.setBool(keccak256("majority.set.is.validator",_addr),_isvalidator);
+    }
+
+    function setIndex(address _addr,uint256 _index) public onlySuperUser(){
+        demoStorage.setUint(keccak256("majority.set.index",_addr),_index);
+    }
+
+    function setRecentBlocks(address _addr,uint256 _blocks) public onlySuperUser(){
+        demoStorage.setUint(keccak256("majority.set.recent.blocks",_addr),_blocks);
+    }
 }

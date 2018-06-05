@@ -9,6 +9,7 @@ contract DemoStorage {
     mapping (bytes32=>bool) private boolStorage;
     mapping (bytes32=>bytes) private bytesStorage;
     mapping (bytes32=>int256) private intStorage;
+    
 
     // Modifiers
 
