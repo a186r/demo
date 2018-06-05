@@ -134,43 +134,43 @@ contract ValidatorSet is ValidatorSetInterface{
 
     // getter
     function getIsIn(address _someAddress) public view returns(bool){
-        return demoStorage.getBool(keccak256("pending.status.is.in",_someAddress));
+        return demoStorage.getBool(keccak256(abi.encodePacked("pending.status.is.in",_someAddress)));
     }
 
     function getIndex(address _someAddress) public view returns(uint256){
-        return demoStorage.getUint(keccak256("pending.status.index",_someAddress));
+        return demoStorage.getUint(keccak256(abi.encodePacked("pending.status.index",_someAddress)));
     }
 
     function getFinalized() public view returns (bool){
-        return demoStorage.getBool(keccak256("volidatorset.finalized"));
+        return demoStorage.getBool(keccak256(abi.encodePacked("volidatorset.finalized")));
     }
 
     function getRecentBlocks() public view returns (uint256){
-        return demoStorage.getUint(keccak256("volidatorset.recent.blocks"));
+        return demoStorage.getUint(keccak256(abi.encodePacked("volidatorset.recent.blocks")));
     }
 
     function getSystemAddress() public view returns (address) {
-        return demoStorage.getAddress(keccak256("volidatorset.system.address"));
+        return demoStorage.getAddress(keccak256(abi.encodePacked("volidatorset.system.address")));
     }
 
     // setter
     function setIsIn(address _someAddress,bool _enable) public onlySuperUser{
-        demoStorage.setBool(keccak256("pending.status.is.in",_someAddress),_enable);
+        demoStorage.setBool(keccak256(abi.encodePacked("pending.status.is.in",_someAddress)),_enable);
     }
 
     function setIndex(address _someAddress,uint256 index) public onlySuperUser{
-        demoStorage.setUint(keccak256("pending.status.index",_someAddress),index);
+        demoStorage.setUint(keccak256(abi.encodePacked("pending.status.index",_someAddress)),index);
     }
 
     function setFinalized(bool _enabled) public onlySuperUser{
-        demoStorage.setBool(keccak256("volidatorset.finalized"),_enabled);
+        demoStorage.setBool(keccak256(abi.encodePacked("volidatorset.finalized")),_enabled);
     }
 
     function setRecentBlocks(uint256 _recentBlocks) public onlySuperUser{
-        demoStorage.setUint(keccak256("volidatorset.recent.blocks"),_recentBlocks);
+        demoStorage.setUint(keccak256(abi.encodePacked("volidatorset.recent.blocks")),_recentBlocks);
     }
 
     function setSystemAddress(address _systemAddress)public onlySuperUser{
-        demoStorage.setAddress(keccak256("volidatorset.system.address"),_systemAddress);
+        demoStorage.setAddress(keccak256(abi.encodePacked("volidatorset.system.address")),_systemAddress);
     }
 }

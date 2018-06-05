@@ -32,7 +32,7 @@ contract DemoUpgrade is DemoBase{
  
     function upgradeContract(string _name,address _upgradedContractAddress,bool _forceEther,bool _forceTokens) onlyOwner external {
         // 获取到要替换的合约
-        address oldContractAddress = demoStorage.getAddress(keccak256("contract.name",_name));
+        address oldContractAddress = demoStorage.getAddress(keccak256(abi.encodePacked("contract.name",_name)));
         //检查是否存在
         // require(oldContractAddress != 0x0);
 
@@ -44,18 +44,18 @@ contract DemoUpgrade is DemoBase{
         }
 
         if(!_forceTokens){
-            tokenContract = ERC20(demoStorage.getAddress(keccak256("contract.name","demoToken1")));
+            tokenContract = ERC20(demoStorage.getAddress(keccak256(abi.encodePacked("contract.name","demoToken1"))));
             require(tokenContract.balanceOf(oldContractAddress) == 0);
 
-            tokenContract = ERC20(demoStorage.getAddress(keccak256("contract.name","demoToken2")));
+            tokenContract = ERC20(demoStorage.getAddress(keccak256(abi.encodePacked("contract.name","demoToken2"))));
             require(tokenContract.balanceOf(oldContractAddress) == 0);
         }
 
-        demoStorage.setAddress(keccak256("contract.name",_name),_upgradedContractAddress);
+        demoStorage.setAddress(keccak256(abi.encodePacked("contract.name",_name)),_upgradedContractAddress);
 
-        demoStorage.setAddress(keccak256("contract.address",_upgradedContractAddress),_upgradedContractAddress);
+        demoStorage.setAddress(keccak256(abi.encodePacked("contract.address",_upgradedContractAddress)),_upgradedContractAddress);
 
-        demoStorage.deleteAddress(keccak256("contract.address",oldContractAddress));
+        demoStorage.deleteAddress(keccak256(abi.encodePacked("contract.address",oldContractAddress)));
 
         emit ContractUpgraded(oldContractAddress,_upgradedContractAddress,now);
 
@@ -65,16 +65,16 @@ contract DemoUpgrade is DemoBase{
         require(_contractAddress != 0x0);
 
         // 检查名称没有被占用
-        address existingContractName = demoStorage.getAddress(keccak256("contract.name",_name));
+        address existingContractName = demoStorage.getAddress(keccak256(abi.encodePacked("contract.name",_name)));
         require(existingContractName == 0x0);
 
         //检查地址，确保新合约地址没有出现过
-        address existingContractAddress = demoStorage.getAddress(keccak256("contract.address",_contractAddress));
+        address existingContractAddress = demoStorage.getAddress(keccak256(abi.encodePacked("contract.address",_contractAddress)));
         require(existingContractAddress == 0x0);
 
         // 将合约名称和地址存储到storage
-        demoStorage.setAddress(keccak256("contract.name",_name),_contractAddress);
-        demoStorage.setAddress(keccak256("contract.address",_contractAddress),_contractAddress);
+        demoStorage.setAddress(keccak256(abi.encodePacked("contract.name",_name)),_contractAddress);
+        demoStorage.setAddress(keccak256(abi.encodePacked("contract.address",_contractAddress)),_contractAddress);
 
         emit ContractAdded(_contractAddress,now);
     }

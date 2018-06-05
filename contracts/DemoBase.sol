@@ -33,7 +33,7 @@ contract DemoBase {
 
     // 工具方法
     function roleHas(string _role,address _address) internal view returns (bool){
-        return demoStorage.getBool(keccak256("access.role",_role,_address));
+        return demoStorage.getBool(keccak256(abi.encodePacked("access.role",_role,_address)));
     }
 
     function roleCheck(string _role,address _address)view internal {

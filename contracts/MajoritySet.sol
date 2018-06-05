@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
-import "../lib/AddressVotes.sol";
+import "./AddressVotes.sol";
 
 contract MajoritySet is ValidatorSetInterface {
 	// EVENTS
@@ -107,6 +107,8 @@ contract MajoritySet is ValidatorSetInterface {
 	// Log desire to change the current list.
     function initiateChange() private when_finalized {
         finalized = false;
+
+        // TODO:
         emit InitiateChange(block.blockhash(block.number - 1), pendingList);
     }
 
@@ -118,8 +120,8 @@ contract MajoritySet is ValidatorSetInterface {
 
 	// 查询验证人地址的支持数
     function getSupport(address validator) public view returns (uint) {
-        return demoStorage.getUint(keccak256("addressvote.count",validator));
         // return AddressVotes.count(validatorsStatus[validator].support);
+        return AddressVotes.getCount(keccak256(abi.encodePacked("addressvote.count",validator)));
     }
 
     // 获取被支持数
@@ -132,14 +134,15 @@ contract MajoritySet is ValidatorSetInterface {
         newStatus(validator);
         // address[] memory supported = new address[](demoStorage.getUint(keccak256("nodes.total")));
         AddressVotes.insert(validator, msg.sender);
-        validatorsStatus[msg.sender].supported.push(validator);
+        // validatorsStatus[msg.sender].supported.push(validator);
+        // 如果多数人支持，就添加为验证人
         addValidator(validator);
         emit Support(msg.sender, validator, true);
     }
 
 	// 取消支持
     function removeSupport(address sender, address validator) private {
-        require(AddressVotes.remove(validatorsStatus[validator].support, sender));
+        require(AddressVotes.remove(validator, sender));
         emit Support(sender, validator, false);
         // TODO:如果没有足够的支持者，就将验证者移除
         // removeValidator(validator);
@@ -369,44 +372,44 @@ contract MajoritySet is ValidatorSetInterface {
     // getter
     // 初始支持数
     function getInitialSupport () public view returns(uint256) {
-        return demoStorage.getUint(keccak256("majority.set.initialsupport"));
+        return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.initialsupport")));
     }
 
     function getInitialSupportInserted(address _addr) public view returns(bool){
-        return demoStorage.getBool(keccak256("majority.set.initialsupport.inserted",_addr));
+        return demoStorage.getBool(keccak256(abi.encodePacked("majority.set.initialsupport.inserted",_addr)));
     }
 
     function getIsValidator(address _addr) public view returns(bool){
-        return demoStorage.getBool(keccak256("majority.set.is.validator",_addr));
+        return demoStorage.getBool(keccak256(abi.encodePacked("majority.set.is.validator",_addr)));
     }
 
     function getIndex(address _addr) public view returns(bool){
-        return demoStorage.getUint(keccak256("majority.set.index",_addr));
+        return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.index",_addr)));
     }
 
     function getRecentBlocks(address _addr) public view returns(uint256){
-        return demoStorage.getUint(keccak256("majority.set.recent.blocks",_addr));
+        return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)));
     }
 
 
     // setter
     function setInitialSupport(uint256 _count) public onlySuperUser(){
-        demoStorage.setUint(keccak256("majority.set.initialsupport"),_count);
+        demoStorage.setUint(keccak256(abi.encodePacked("majority.set.initialsupport")),_count);
     }
 
     function setInitialSupportInserted(address _addr,bool _inserted) public onlySuperUser(){
-        demoStorage.setBool(keccak256("majority.set.initialsupport.inserted",_addr),_inserted);
+        demoStorage.setBool(keccak256(abi.encodePacked("majority.set.initialsupport.inserted",_addr)),_inserted);
     }
 
     function setIsValidator(address _addr,bool _isvalidator) public onlySuperUser(){
-        demoStorage.setBool(keccak256("majority.set.is.validator",_addr),_isvalidator);
+        demoStorage.setBool(keccak256(abi.encodePacked("majority.set.is.validator",_addr)),_isvalidator);
     }
 
     function setIndex(address _addr,uint256 _index) public onlySuperUser(){
-        demoStorage.setUint(keccak256("majority.set.index",_addr),_index);
+        demoStorage.setUint(keccak256(abi.encodePacked("majority.set.index",_addr)),_index);
     }
 
     function setRecentBlocks(address _addr,uint256 _blocks) public onlySuperUser(){
-        demoStorage.setUint(keccak256("majority.set.recent.blocks",_addr),_blocks);
+        demoStorage.setUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)),_blocks);
     }
 }

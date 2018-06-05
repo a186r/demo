@@ -9,22 +9,22 @@ contract DemoStorage {
     mapping (bytes32=>bool) private boolStorage;
     mapping (bytes32=>bytes) private bytesStorage;
     mapping (bytes32=>int256) private intStorage;
-    
+
 
     // Modifiers
 
 // 确保只有最新的合约可以调用
     modifier onlyLatestNetworkContract(){
 
-        if(boolStorage[keccak256("contract.storage.initialised")] == true){
-            require(addressStorage[keccak256("contract.address",msg.sender)] != 0x0);
+        if(boolStorage[keccak256(abi.encodePacked("contract.storage.initialised"))] == true){
+            require(addressStorage[keccak256(abi.encodePacked("contract.address",msg.sender))] != 0x0);
         }
         _;
     }
 
     //设置owner
     constructor () public {
-        boolStorage[keccak256("access.role","owner",msg.sender)] = true;
+        boolStorage[keccak256(abi.encodePacked("access.role","owner",msg.sender))] = true;
     }
 
     function getAddress(bytes32 _key) external view returns (address) {

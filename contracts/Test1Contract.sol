@@ -10,11 +10,11 @@ contract Test1Contract is DemoBase{
     }
 
     function setTest1Num1(uint _num) public onlySuperUser{
-        demoStorage.setUint(keccak256("test1.num.1"),_num);
+        demoStorage.setUint(keccak256(abi.encodePacked("test1.num.1")),_num);
     }
 
     function setTest1Num2(uint _num) public onlySuperUser{
-        demoStorage.setUint(keccak256("test1.num.2"),_num);
+        demoStorage.setUint(keccak256(abi.encodePacked("test1.num.2")),_num);
     }
 
 }

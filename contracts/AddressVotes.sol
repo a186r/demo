@@ -75,7 +75,7 @@ contract AddressVotes is DemoBase{
 
     // getter
     function getCount(address _addr) public view returns(uint256){
-        return demoStorage.getUint(keccak256("addressvote.count",_addr));
+        return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_addr)));
     }
 
     function getInserted(address _addr,address _voter) public view returns(bool){
@@ -87,7 +87,7 @@ contract AddressVotes is DemoBase{
 
     // 地址得票数
     function setCount(address _addr,uint256 _count) public onlySuperUser(){
-        demoStorage.setUint(keccak256("addressvote.count",_addr),_count);
+        demoStorage.setUint(keccak256(abi.encodePacked("addressvote.count",_addr)),_count);
     }
 
     /**
