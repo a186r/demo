@@ -12,6 +12,3 @@
 `> migrate`
 
 `> TestContract.deployed().then(inst => { TestContractInstance = inst })`
-
-- gas消耗较高
-- 
