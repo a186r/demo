@@ -1,7 +1,7 @@
 pragma solidity ^0.4.15;
 
-import "./DemoBase.sol";
-import "../lib/SafeMath.sol";
+import "../contracts/DemoBase.sol";
+import "./SafeMath.sol";
 
 contract AddressVotes is DemoBase{
 

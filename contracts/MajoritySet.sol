@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
-import "./AddressVotes.sol";
+import "../lib/AddressVotes.sol";
 
 contract MajoritySet is ValidatorSetInterface {
     
@@ -109,8 +109,7 @@ contract MajoritySet is ValidatorSetInterface {
     function initiateChange() private whenFinalized {
         finalized = false;
 
-        // TODO: blockhash被弃用
-        emit InitiateChange(block.blockhash(block.number - 1), pendingList);
+        // emit InitiateChange(block.blockhash(block.number - 1), pendingList);
     }
 
     function finalizeChange() public onlySystemAndNotFinalized {

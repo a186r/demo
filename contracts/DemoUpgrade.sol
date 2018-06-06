@@ -25,10 +25,13 @@ contract DemoUpgrade is DemoBase{
     }
 
     // 合约升级方法
-
     // _name 要替换的合约名
     // _upgradedContractAddress 新的合约地址
     // _forceEther`
+
+    modifier notExist() {
+        
+    }
  
     function upgradeContract(string _name,address _upgradedContractAddress,bool _forceEther,bool _forceTokens) onlyOwner external {
         // 获取到要替换的合约
