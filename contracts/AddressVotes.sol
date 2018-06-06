@@ -1,7 +1,7 @@
 pragma solidity ^0.4.15;
 
-import "../contracts/DemoBase.sol";
-import "./SafeMath.sol";
+import "./DemoBase.sol";
+import "../lib/safemath.sol";
 
 contract AddressVotes is DemoBase{
 
@@ -45,7 +45,7 @@ contract AddressVotes is DemoBase{
 
     // setter
     // 地址得票数
-    function setCount(address _addr,uint256 _count) public onlySuperUser(){
+    function setCount(address _addr,uint256 _count) public {
         demoStorage.setUint(keccak256(abi.encodePacked("addressvote.count",_addr)),_count);
     }
 
@@ -54,7 +54,7 @@ contract AddressVotes is DemoBase{
         @_voter 投票人
         @_is 是否投票过
      */
-    function setInserted(address _addr,address _voter,bool _is) public onlySuperUser(){
+    function setInserted(address _addr,address _voter,bool _is) public {
         demoStorage.setBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)),_is);
     }
 }
