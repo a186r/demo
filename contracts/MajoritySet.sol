@@ -123,7 +123,6 @@ contract MajoritySet is ValidatorSetInterface {
         // return AddressVotes.count(validatorsStatus[validator].support);
         // return AddressVotes.getCount(validator);
         return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_validator)));
-
     }
 
     // 获取被支持数
