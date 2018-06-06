@@ -334,7 +334,7 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     modifier onlySystemAndNotFinalized() {
-        require(msg.sender == SYSTEM_ADDRESS && !finalized);
+        require(msg.sender == getSystemAddress() && !finalized);
         _;
     }
 
