@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../lib/SafeMath.sol";
+import "../lib/safemath.sol";
 import "./DemoBase.sol";
 import "../lib/ds-guard.sol";
 
@@ -20,13 +20,13 @@ contract TestContract is DemoBase,DSGuard{
         version = 1;
     }
 
-    function setGuard() public onlySuperUser{
-        dsguard.permit(
-            msg.sender,
-            demoStorage.getAddress(keccak256(abi.encodePacked("contract.name","Test1Contract")),
-            ANY
-        );
-    }
+
+
+    // dsguard.permit(
+    //     msg.sender,
+    //     demoStorage.getAddress(keccak256(abi.encodePacked("contract.name","Test1Contract")),
+    //     ANY
+    // )
 
     function TwoNumSum(uint _num1,uint _num2) public {
         demoStorage.setUint(keccak256(abi.encodePacked("test.twonumsum")),_num1.add(_num2));

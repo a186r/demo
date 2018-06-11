@@ -29,10 +29,6 @@ contract DemoUpgrade is DemoBase{
     // _upgradedContractAddress 新的合约地址
     // _forceEther`
 
-    modifier notExist() {
-        
-    }
- 
     function upgradeContract(string _name,address _upgradedContractAddress,bool _forceEther,bool _forceTokens) onlyOwner external {
         // 获取到要替换的合约
         address oldContractAddress = demoStorage.getAddress(keccak256(abi.encodePacked("contract.name",_name)));

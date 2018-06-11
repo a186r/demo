@@ -49,11 +49,7 @@ contract AddressVotes is DemoBase{
         demoStorage.setUint(keccak256(abi.encodePacked("addressvote.count",_addr)),_count);
     }
 
-    /**
-        @_addr 地址
-        @_voter 投票人
-        @_is 是否投票过
-     */
+// 是否投过票
     function setInserted(address _addr,address _voter,bool _is) public {
         demoStorage.setBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)),_is);
     }

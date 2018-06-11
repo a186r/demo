@@ -92,6 +92,7 @@ module.exports = async (deployer, network) => {
             // console.log(test3Contract.address);
 
             // ValidatorSet地址设置
+
             await demoStorageInstance.setAddress(
                 config.web3.utils.soliditySha3('contract.address', validatorSet.address),
                 validatorSet.address
@@ -102,6 +103,5 @@ module.exports = async (deployer, network) => {
             )
             console.log('\x1b[33m%s\x1b[0m:', 'Set validatorSet Address');
             console.log(validatorSet.address);
-
         })
 }
