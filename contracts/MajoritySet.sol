@@ -53,8 +53,7 @@ contract MajoritySet is ValidatorSetInterface {
 	// Log desire to change the current list.
     function initiateChange() private whenFinalized {
         finalized = false;
-
-        // emit InitiateChange(block.blockhash(block.number - 1), pendingList);
+        emit InitiateChange(block.blockhash(block.number - 1), pendingList);
     }
 
     function finalizeChange() public onlySystemAndNotFinalized {
@@ -65,15 +64,9 @@ contract MajoritySet is ValidatorSetInterface {
 
 	// 查询验证人地址的支持数
     function getSupport(address _validator) public view returns (uint) {
-        // return AddressVotes.count(validatorsStatus[validator].support);
-        // return AddressVotes.getCount(validator);
+
         return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_validator)));
     }
-
-    // 获取被支持数
-    // function getSupported(address validator) public view returns (address[]) {
-    //     return validatorsStatus[validator].supported;
-    // }
 
 	// 投票支持
     function addSupport(address _validator) public onlyValidator notVoted(_validator) {
@@ -91,7 +84,7 @@ contract MajoritySet is ValidatorSetInterface {
             // require(AddressVotes.remove(validator, sender));
         emit Support(sender, validator, false);
         // TODO:如果没有足够的支持者，就将验证者移除
-        // removeValidator(validator);
+        removeValidator(validator);
     }
 
     // 设置初始状态
