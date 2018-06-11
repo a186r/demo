@@ -1,9 +1,13 @@
 pragma solidity ^0.4.23;
 
 import "../interface/ValidatorSetInterface.sol";
-import "./AddressVotes.sol";
+// import "./AddressVotes.sol";
+import "../lib/safemath.sol";
+
 
 contract MajoritySet is ValidatorSetInterface {
+
+    using SafeMath for uint;
     
 	// EVENTS
     event Report(address indexed reporter, address indexed reported, bool indexed malicious);
@@ -72,7 +76,7 @@ contract MajoritySet is ValidatorSetInterface {
     function addSupport(address _validator) public onlyValidator notVoted(_validator) {
         newStatus(_validator);
         // address[] memory supported = new address[](demoStorage.getUint(keccak256("nodes.total")));
-            // AddressVotes.insert(_validator, msg.sender);
+        insert(_validator, msg.sender);
         // validatorsStatus[msg.sender].supported.push(validator);
         // 如果多数人支持，就添加为验证人
         addValidator(_validator);
@@ -174,14 +178,14 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     modifier notVoted(address _validator) {
-        // require(!AddressVotes.contains(_validator,msg.sender));
+        require(!contains(_validator));
         _;
     }
 
     modifier hasNoVotes(address _validator){
-        // if(AddressVotes.getCount(_validator) == 0){
+        if(getCount(_validator) == 0){
             _;
-        // }
+        }
     }
 
     modifier isRecent(uint _blockNumber) {
@@ -190,13 +194,34 @@ contract MajoritySet is ValidatorSetInterface {
     }
 
     modifier onlySystemAndNotFinalized() {
-        // require(msg.sender == getSystemAddress() && !finalized);
+        require(msg.sender == getSystemAddress() && !finalized);
         _;
     }
 
     modifier whenFinalized() {
         require(finalized);
         _;
+    }
+
+    // 是否已经投票
+    function contains(address _voter) public view returns(bool){
+        return demoStorage.getBool(keccak256("addressvote.inserted",_voter));
+    }
+
+	// _voter对地址_addr投票
+    function insert(address _addr,address _voter) public returns (bool) {
+        if(getInserted(_addr,_voter)) {return false;}
+        setCount(_voter,getCount(_voter).add(1));
+        setInserted(_addr,_voter,true);
+        return true;
+    }
+
+	// _voter撤回对_addr的投票
+    function remove(address _addr,address _voter) public returns (bool){
+        if(getInserted(_addr,_voter)){return false;}
+        setCount(_voter,getCount(_voter).sub(1));
+        setInserted(_addr,_voter,false);
+        return true;
     }
 
     // getter
@@ -221,6 +246,30 @@ contract MajoritySet is ValidatorSetInterface {
         return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)));
     }
 
+    // function getCount(address _addr) public view returns(uint256){
+    //     return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_addr)));
+    // }
+
+    // function getInserted(address _addr,address _voter) public view returns(bool){
+    //     // return demoStorage.getBool(keccak256("addressvote.inserted",_addr));
+    //     return demoStorage.getBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)));
+    // }
+
+    function getSystemAddress() public view returns(address){
+        return demoStorage.getAddress(keccak256(abi.encodePacked("majority.set.system.address")));
+    }
+
+    // 地址得票数
+    function getCount(address _addr) public view returns(uint256){
+        return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_addr)));
+    }
+
+    function getInserted(address _addr,address _voter) public view returns(bool){
+        return demoStorage.getBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)));
+    }
+
+
+
     // setter
     function setInitialSupport(uint256 _count) public onlySuperUser(){
         demoStorage.setUint(keccak256(abi.encodePacked("majority.set.initialsupport")),_count);
@@ -244,5 +293,15 @@ contract MajoritySet is ValidatorSetInterface {
 
     function setSystemAddress(address _addr) public onlySuperUser(){
         demoStorage.setAddress(keccak256(abi.encodePacked("majority.set.system.address")),_addr);
+    }
+
+    // 地址得票数
+    function setCount(address _addr,uint256 _count) public {
+        demoStorage.setUint(keccak256(abi.encodePacked("addressvote.count",_addr)),_count);
+    }
+
+    // 是否投过票
+    function setInserted(address _addr,address _voter,bool _is) public {
+        demoStorage.setBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)),_is);
     }
 }
