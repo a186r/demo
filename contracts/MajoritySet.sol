@@ -125,12 +125,12 @@ contract MajoritySet is ValidatorSetInterface {
         pendingList[removedIndex] = lastValidator;
 		// Update the index of the last validator.
         // validatorsStatus[lastValidator].index = removedIndex;
-            // getIndex(lastValidator) = removedIndex;
+        setIndex(lastValidator,removedIndex);
         delete pendingList[lastIndex];
         pendingList.length--;
 		// 重置状态
         // validatorsStatus[_validator].index = 0;
-            // setIndex(_validator) = 0;
+        setIndex(_validator,0);
         // validatorsStatus[_validator].isValidator = false;
         setIsValidator(_validator,false);
 		
@@ -227,11 +227,6 @@ contract MajoritySet is ValidatorSetInterface {
     function getRecentBlocks(address _addr) public view returns(uint256){
         return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)));
     }
-
-    function getSystemAddress(address _addr) public view returns(address){
-        return demoStorage.getAddress(keccak256(abi.encodePacked("majority.set.system.address")));
-    }
-
 
     // setter
     function setInitialSupport(uint256 _count) public onlySuperUser(){

@@ -22,6 +22,7 @@ contract TestContract is DemoBase,DSGuard{
 
 
 
+// 权限控制
     // dsguard.permit(
     //     msg.sender,
     //     demoStorage.getAddress(keccak256(abi.encodePacked("contract.name","Test1Contract")),
