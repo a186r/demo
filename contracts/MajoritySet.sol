@@ -100,6 +100,8 @@ contract MajoritySet is ValidatorSetInterface {
     //     validatorsList = pendingList;
     // }
 
+
+
 	// 获取验证人列表
     function getValidators() public view returns (address[]) {
         return validatorsList;
