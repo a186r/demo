@@ -6,7 +6,8 @@ const demoUpgrade = artifacts.require('../contract/DemoUpgrade.sol');
 const testContract = artifacts.require('../contract/TestContract.sol');
 const test1Contract = artifacts.require('../contract/Test1Contract.sol');
 // const test3Contract = artifacts.require('../contract/Test3Contract.sol');
-const validatorSet = artifacts.require('../contract/ValidatorSet.sol');
+// const validatorSet = artifacts.require('../contract/ValidatorSet.sol');
+const majoritySet = artifacts.require('../contract/MajoritySet.sol');
 
 // 接口
 const demoStorageInterface = artifacts.require('../interface/DemoStorageInterface.sol');
@@ -22,7 +23,8 @@ module.exports = async (deployer, network) => {
                 [test1Contract, demoStorage.address],
                 [demoUpgrade, demoStorage.address],
                 // [test3Contract, demoStorage.address],
-                [validatorSet, demoStorage.address]
+                // [validatorSet, demoStorage.address],
+                [majoritySet, demoStorage.address]
             ]);
         })
 
@@ -71,6 +73,19 @@ module.exports = async (deployer, network) => {
             console.log('\x1b[33m%s\x1b[0m:', 'Set demoUpgrade Address');
             console.log(demoUpgrade.address);
 
+            // majoritySet地址设置
+
+            await demoStorageInstance.setAddress(
+                config.web3.utils.soliditySha3('contract.address', majoritySet.address),
+                majoritySet.address
+            )
+            await demoStorageInstance.setAddress(
+                config.web3.utils.soliditySha3('contract.name', 'majoritySet'),
+                majoritySet.address
+            )
+            console.log('\x1b[33m%s\x1b[0m:', 'Set majoritySet Address');
+            console.log(majoritySet.address);
+
             /*** Permissions *********/
 
             // Disable direct access to storage now
@@ -78,30 +93,5 @@ module.exports = async (deployer, network) => {
                 config.web3.utils.soliditySha3('contract.storage.initialised'),
                 true
             );
-
-            // test3Contract地址设置
-            // await demoStorageInstance.setAddress(
-            //     config.web3.utils.soliditySha3('contract.address', test3Contract.address),
-            //     test3Contract.address
-            // );
-            // await demoStorageInstance.setAddress(
-            //     config.web3.utils.soliditySha3('contract.name', 'test3Contract'),
-            //     test3Contract.address
-            // );
-            // console.log('\x1b[33m%s\x1b[0m:', 'Set test3Contract Address');
-            // console.log(test3Contract.address);
-
-            // ValidatorSet地址设置
-
-            await demoStorageInstance.setAddress(
-                config.web3.utils.soliditySha3('contract.address', validatorSet.address),
-                validatorSet.address
-            )
-            await demoStorageInstance.setAddress(
-                config.web3.utils.soliditySha3('contract.name', 'validatorSet'),
-                validatorSet.address
-            )
-            console.log('\x1b[33m%s\x1b[0m:', 'Set validatorSet Address');
-            console.log(validatorSet.address);
         })
 }

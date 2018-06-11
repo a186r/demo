@@ -7,7 +7,7 @@ pragma solidity ^0.4.23;
  * Contract source taken from Open Zeppelin: https://github.com/OpenZeppelin/zeppelin-solidity/blob/v1.4.0/contracts/math/SafeMath.sol
  */
  
-library SafeMath {
+library safemath {
     function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         if (a == 0) {
             return 0;

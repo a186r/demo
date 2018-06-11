@@ -7,7 +7,7 @@ import "../lib/safemath.sol";
 
 contract MajoritySet is ValidatorSetInterface {
 
-    using SafeMath for uint;
+    using safemath for uint;
     
 	// EVENTS
     event Report(address indexed reporter, address indexed reported, bool indexed malicious);
@@ -15,6 +15,8 @@ contract MajoritySet is ValidatorSetInterface {
     event ChangeFinalized(address[] current_set);
 
 // STATE
+
+    // address[] memory supported = new address[](demoStorage.getUint(keccak256("address.total")));
 
 	// 当前有权参与投票的地址列表
     address[] public validatorsList;
@@ -105,7 +107,7 @@ contract MajoritySet is ValidatorSetInterface {
         // validatorsStatus[validator].isValidator = true;
         setIsValidator(validator,true);
 		// 新加入的验证人先投票给自己
-            // AddressVotes.insert(validator, validator);
+        insert(validator, validator);
         // validatorsStatus[validator].supported.push(validator);
         initiateChange();
     }
@@ -147,10 +149,6 @@ contract MajoritySet is ValidatorSetInterface {
     function highSupport(address validator) public view returns (bool) {
         return getSupport(validator) > pendingList.length/2;
     }
-
-    // function firstBenignReported(address reporter, address validator) public view returns (uint) {
-        // return validatorsStatus[validator].firstBenign[reporter];
-    // }
 
     modifier hasHighSupport(address validator) {
         if (highSupport(validator)) { _; }
@@ -245,15 +243,6 @@ contract MajoritySet is ValidatorSetInterface {
     function getRecentBlocks(address _addr) public view returns(uint256){
         return demoStorage.getUint(keccak256(abi.encodePacked("majority.set.recent.blocks",_addr)));
     }
-
-    // function getCount(address _addr) public view returns(uint256){
-    //     return demoStorage.getUint(keccak256(abi.encodePacked("addressvote.count",_addr)));
-    // }
-
-    // function getInserted(address _addr,address _voter) public view returns(bool){
-    //     // return demoStorage.getBool(keccak256("addressvote.inserted",_addr));
-    //     return demoStorage.getBool(keccak256(abi.encodePacked("addressvote.inserted",_addr,_voter)));
-    // }
 
     function getSystemAddress() public view returns(address){
         return demoStorage.getAddress(keccak256(abi.encodePacked("majority.set.system.address")));
