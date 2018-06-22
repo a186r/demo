@@ -3,9 +3,13 @@ pragma solidity ^0.4.15;
 import "./DemoBase.sol";
 import "../lib/safemath.sol";
 
+// TODO:投票类型 合约升级、节点准入
+// TODO:投票规则绑定 setting类
+// TODO:多层map
+
 contract AddressVotes is DemoBase{
 
-    using SafeMath for uint;
+    using safemath for uint;
 
     constructor (address _demoStorageAddress) DemoBase (_demoStorageAddress) public {
         version = 1;

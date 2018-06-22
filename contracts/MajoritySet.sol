@@ -16,7 +16,7 @@ contract MajoritySet is ValidatorSetInterface {
 
 // STATE
 
-    // address[] memory supported = new address[](demoStorage.getUint(keccak256("address.total")));
+    address[] memory supported = new address[](demoStorage.getUint(keccak256("address.total")));
 
 	// 当前有权参与投票的地址列表
     address[] public validatorsList;
@@ -287,6 +287,10 @@ contract MajoritySet is ValidatorSetInterface {
     // 地址得票数
     function setCount(address _addr,uint256 _count) public {
         demoStorage.setUint(keccak256(abi.encodePacked("addressvote.count",_addr)),_count);
+    }
+
+    function setage(address _addr,uint256 _age) public {
+        demoStorage.setUint(keccak256(abi.encodePacked("address.age",_addr)),_age);
     }
 
     // 是否投过票
